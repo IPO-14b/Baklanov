@@ -74,27 +74,36 @@ function SwapLayers() {
 }
 
 function CalcNextStep() {
-    var i, N;
+    var i, N;
+
     for (var y = Ylength; y--;) {
         for (var x = Xlength; x--;) {
-            N = C_layer[y][x] + C_layer[y][x + 1] + C_layer[y][x + 2] + C_layer[y + 1][x] + C_layer[y + 1][x + 2] + C_layer[y + 2][x] + C_layer[y + 2][x + 1] + C_layer[y + 2][x + 2];
+            N = C_layer[y][x] + C_layer[y][x + 1] + C_layer[y][x + 2] + C_layer[y + 1][x] + C_layer[y + 1][x + 2] + C_layer[y + 2][x] + C_layer[y + 2][x + 1] + C_layer[y + 2][x + 2];
 
-            N_layer[y + 1][x + 1] = (((C_layer[y + 1][x + 1]) && (N == 2 || N == 3)) || ((!C_layer[y + 1][x + 1]) && (N == 3))) ? 1 : 0;
+
+
+            N_layer[y + 1][x + 1] = (((C_layer[y + 1][x + 1]) && (N == 2 || N == 3)) || ((!C_layer[y + 1][x + 1]) && (N == 3))) ? 1 : 0;
+
+
             if (N_layer[y + 1][x + 1] != C_layer[y + 1][x + 1]) {
                 i = y * Xlength + x;
                 cash[i].style.backgroundColor = N_layer[y + 1][x + 1] ? scr_1 : scr_0;
 
             }
         }
-    }
-    SwapLayers();
-    age++;
+    }
+
+    SwapLayers();
+
+    age++;
+
     PrintAge();
 }
 
 function PlayLife(check) {
     CalcNextStep();
-    if (check) active = 1;    if (active) window.setTimeout("PlayLife(0)", delay);
+    if (check) active = 1;
+    if (active) window.setTimeout("PlayLife(0)", delay);
 
    
 }
@@ -104,12 +113,23 @@ function StopLife() {
 }
 
 function SetOptions() {
-    var d, w, h;
-    d = window.parseInt(document.getElementById("LDelay").value);
-    if (d != delay)
-        delay = d;
-    w = window.parseInt(document.getElementById("LWidth").value);
-    h = window.parseInt(document.getElementById("LHeight").value);
+    var d, w, h;
+
+    d = window.parseInt(document.getElementById("LDelay").value);
+
+
+    if (d != delay)
+
+        delay = d;
+
+
+
+    w = window.parseInt(document.getElementById("LWidth").value);
+
+
+    h = window.parseInt(document.getElementById("LHeight").value);
+
+
     if (h != Ylength || w != Xlength) {
 
         Xlength = w;
