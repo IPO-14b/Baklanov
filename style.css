@@ -1,6 +1,6 @@
 #tabs{
     margin: auto;
-    text-align: left;
+    text-align: center;
 }
 #spacetable {
     margin: auto;
@@ -26,7 +26,7 @@
     border-right: #000000 1px solid;
     margin: auto;
     width: 100%;
-    text-align: left;
+    text-align: center;
 
 }
 
@@ -36,6 +36,6 @@
     border-right: #000000 1px solid;
     margin: auto;
     width: 100%;
-    text-align: left;
+    text-align: center;
     color: #ff0000;
 }
