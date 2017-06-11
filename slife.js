@@ -31,8 +31,7 @@ function LoadLife(first) {
  
 }function SetOptions() {
    
-}function PrintAge() {
- 
+}function PrintAge() { 
 }function DumpOptions() {
-  
+    
 }

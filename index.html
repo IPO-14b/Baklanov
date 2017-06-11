@@ -6,11 +6,32 @@
     <link href="style.css" type="text/css" rel="stylesheet">
     <script src="slife.js" type="text/javascript"></script>
 </head>
-<body>
-    <input type="button" value="ÂÂÎÄ" >
-    
-    <input type="button" value="ÏÓÑÊ" >
-    
-    <input type="button" value="ÑÒÎÏ" >
+<body onload="LoadLife(1);">
+    <div id="bottomline">
+        <!-- form name="calc" -->
+        <nobr>
+            <div id="Age"></div>
+            &nbsp;
+            X :
+            <input id="LWidth" type="Text" size=1 value="50" width="15px">
+            &nbsp;
+            Y :
+            <input id="LHeight" type="Text" size=1 value="50" width="15px">
+            &nbsp;
+            Çàäåðæêà, ìñ :
+            <input id="LDelay" type="Text" size=1 value="1" width="15px">
+            &nbsp;
+            <input type="button" value="ÂÂÎÄ" onClick="SetOptions();">
+            &nbsp;
+            <input type="button" value="ÏÓÑÊ" onClick="if(!active) PlayLife(1);">
+            &nbsp;
+            <input type="button" value="ÑÒÎÏ" onClick="StopLife();">
+
+
+        </nobr>
+        <!-- /form -->
+    </div><br>
+    <div id="tabs"></div>
+    <br><div id="topline"><br>Fast Conway's Game of Life<br><br></div>
 </body>
 </html>
