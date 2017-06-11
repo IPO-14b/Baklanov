@@ -34,15 +34,18 @@ function InitCash() {
 }
 
 function CellTrigger(x, y) {
-   
+    var i = (y - 1) * Xlength + x - 1;    cash[i].style.backgroundColor = C_layer[y][x] ? scr_0 : scr_1;    C_layer[y][x] = C_layer[y][x] ? 0 : 1;
 }
 
 function InitSpace(x, y) {
+    C_layer = new Array(y + 2);    N_layer = new Array(y + 2);    for (var i = 0; i < y + 2; i++) {        C_layer[i] = new Array(x + 2);        N_layer[i] = new Array(x + 2);    }    for (var i = 0; i < y + 2; i++) {        for (var j = 0; j < x + 2; j++) {
+            C_layer[i][j] = N_layer[i][j] = 0;
+        }    }
    
 }
 
 function SwapLayers() {
-   
+    var tmp = C_layer;    C_layer = N_layer;    N_layer = tmp;
 }
 
 function CalcNextStep() {
