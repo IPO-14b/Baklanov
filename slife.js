@@ -17,11 +17,17 @@ function LoadLife(first) {
 }
 
 function TableBuild() {
-    var tab = "<table id='spacetable'>";    for (var y = 1; y <= Ylength; y++) {
-        tab += "<tr>";        for (var x = 1; x <= Xlength; x++) {
-            var i = (y - 1) * Xlength + x - 1;            tab += "<td id=" + i + " onclick='CellTrigger(" + x + "," + y + ");'>&nbsp;</td>";
-        }        tab += "</tr>";
-    }    tab += "</table>";    document.getElementById('tabs').innerHTML = tab;
+    var tab = "<table id='spacetable'>";
+    for (var y = 1; y <= Ylength; y++) {
+        tab += "<tr>";
+        for (var x = 1; x <= Xlength; x++) {
+            var i = (y - 1) * Xlength + x - 1;
+            tab += "<td id=" + i + " onclick='CellTrigger(" + x + "," + y + ");'>&nbsp;</td>";
+        }
+        tab += "</tr>";
+    }
+    tab += "</table>";
+    document.getElementById('tabs').innerHTML = tab;
    
 }
 
@@ -68,19 +74,50 @@ function SwapLayers() {
 }
 
 function CalcNextStep() {
-   
+    var i, N;
+    for (var y = Ylength; y--;) {
+        for (var x = Xlength; x--;) {
+            N = C_layer[y][x] + C_layer[y][x + 1] + C_layer[y][x + 2] + C_layer[y + 1][x] + C_layer[y + 1][x + 2] + C_layer[y + 2][x] + C_layer[y + 2][x + 1] + C_layer[y + 2][x + 2];
+
+            N_layer[y + 1][x + 1] = (((C_layer[y + 1][x + 1]) && (N == 2 || N == 3)) || ((!C_layer[y + 1][x + 1]) && (N == 3))) ? 1 : 0;
+            if (N_layer[y + 1][x + 1] != C_layer[y + 1][x + 1]) {
+                i = y * Xlength + x;
+                cash[i].style.backgroundColor = N_layer[y + 1][x + 1] ? scr_1 : scr_0;
+
+            }
+        }
+    }
+    SwapLayers();
+    age++;
+    PrintAge();
 }
 
 function PlayLife(check) {
+    CalcNextStep();
+    if (check) active = 1;    if (active) window.setTimeout("PlayLife(0)", delay);
+
    
 }
 
 function StopLife() {
- 
+    active = 1;
 }
 
 function SetOptions() {
-   
+    var d, w, h;
+    d = window.parseInt(document.getElementById("LDelay").value);
+    if (d != delay)
+        delay = d;
+    w = window.parseInt(document.getElementById("LWidth").value);
+    h = window.parseInt(document.getElementById("LHeight").value);
+    if (h != Ylength || w != Xlength) {
+
+        Xlength = w;
+
+        Ylength = h;
+
+        LoadLife(0);
+    }
 }
 
 function PrintAge() {
