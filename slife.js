@@ -31,7 +31,11 @@ function LoadLife(first) {
  
 }function SetOptions() {
    
-}function PrintAge() { 
+}function PrintAge() {
+    document.getElementById("Age").innerHTML = "Поколений : " + age;
 }function DumpOptions() {
+    document.getElementById("LDelay").value = delay;
+    document.getElementById("LWidth").value = Xlength;
+    document.getElementById("LHeight").value = Ylength;
     
 }
