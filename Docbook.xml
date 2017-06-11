@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. -->
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "docbookV4.5/docbookx.dtd" []>
+<article>
+  <articleinfo>
+    <title>JSLife</title>
+    <author>
+      <surname>Бакланов</surname>
+      <firstname> Николай</firstname>
+    </author>
+    <copyright>
+      <year>2017</year>
+      <holder>Николай Бакланов</holder>
+    </copyright>
+  </articleinfo>
+  <para>Приложение предназначено для реализации алгоритимческой игры  придуманной английским математиком Джоном Конвеем .</para>
+  <para>Приложение разработано для браузера Google Chrome. При разработке использовался язык JavaScript для обеспечения функционала и разметка HTML для обеспечения вывода пользовательского интерфейса.</para>
+  <section>
+    <title>Пример использования 1</title>
+    <para>Функция пересчитывающая состояние на поле и перерисовывающая изменившиеся ячейки.Реальный размер массива увеличивается на 2 столбца и 2 строки,
+ чтобы упростить расчет на границах. При нажатии на кнопку &quot;Пуск&quot; запускается цикл вызывающий эту функцию для перерисовки игрового поля.  Процесс будет просиходить до тех пор пока игра не будет остановлена с помощью кнопки &quot;Стоп&quot;.</para>
+    <programlisting>function CalcNextStep() {
+    var i, N;
+
+    for (var y = Ylength; y--;) {
+        for (var x = Xlength; x--;) {
+            N = C_layer[y][x] + C_layer[y][x + 1] + C_layer[y][x + 2] + C_layer[y + 1][x] + C_layer[y + 1][x + 2] + C_layer[y + 2][x] + C_layer[y + 2][x + 1] + C_layer[y + 2][x + 2];
+
+
+
+            N_layer[y + 1][x + 1] = (((C_layer[y + 1][x + 1]) &amp;&amp; (N == 2 || N == 3)) || ((!C_layer[y + 1][x + 1]) &amp;&amp; (N == 3))) ? 1 : 0;
+
+
+            if (N_layer[y + 1][x + 1] != C_layer[y + 1][x + 1]) {
+                i = y * Xlength + x;
+                cash[i].style.backgroundColor = N_layer[y + 1][x + 1] ? scr_1 : scr_0;
+
+            }
+        }
+    }
+
+    SwapLayers();
+
+    age++;
+
+    PrintAge();
+}</programlisting>
+  </section>
+  <section>
+    <title>Пример использования 2</title>
+    <para>Интерфейсная функция установки настроек. Считывает значения находящиеся в полях ширины, высоты и задержки смены поколений.Записывает их в переменные програмы для дальнейшей обработкифункциями отрисовки. Представлена тремя полями ввода указнных выше параметров. Вызывается при запуске расчета поклений при нажатии на кнопку &quot;Пуск&quot;</para>
+    <programlisting>function SetOptions() {
+    var d, w, h;
+
+    d = window.parseInt(document.getElementById(&quot;LDelay&quot;).value);
+
+
+    if (d != delay)
+
+        delay = d;
+
+
+
+    w = window.parseInt(document.getElementById(&quot;LWidth&quot;).value);
+
+
+    h = window.parseInt(document.getElementById(&quot;LHeight&quot;).value);
+
+
+    if (h != Ylength || w != Xlength) {
+
+        Xlength = w;
+
+        Ylength = h;
+
+        LoadLife(0);
+    }
+}</programlisting>
+  </section>
+  <section>
+    <title>Пример использования 3</title>
+    <para>Функция инвертирующая состояние ячеки при нажатии. Функция изменяет значение конкретного элемента массива игрового поля на противоположное  по клику мыши на элемент таблицы игрового поля. Таким образом можно создавать изначальную конфигурацию игрового поля или редактитировать его в процессе игры.</para>
+    <programlisting>function CellTrigger(x, y) {
+    var i = (y - 1) * Xlength + x - 1;
+    cash[i].style.backgroundColor = C_layer[y][x] ? scr_0 : scr_1;
+    C_layer[y][x] = C_layer[y][x] ? 0 : 1;
+
+}</programlisting>
+  </section>
+</article>
