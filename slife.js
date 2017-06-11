@@ -14,26 +14,58 @@ function LoadLife(first) {
     age = 0;
     PrintAge();
    
-}function TableBuild() {
+}
+
+function TableBuild() {
+    var tab = "<table id='spacetable'>";    for (var y = 1; y <= Ylength; y++) {
+        tab += "<tr>";        for (var x = 1; x <= Xlength; x++) {
+            var i = (y - 1) * Xlength + x - 1;            tab += "<td id=" + i + " onclick='CellTrigger(" + x + "," + y + ");'>&nbsp;</td>";
+        }        tab += "</tr>";
+    }    tab += "</table>";    document.getElementById('tabs').innerHTML = tab;
    
-}function InitCash() {
+}
+
+function InitCash() {
+    cash = new Array(Xlength * Ylength);    for (var y = 1; y <= Ylength; y++) {
+        for (var x = 1; x <= Xlength; x++) {
+            var i = (y - 1) * Xlength + x - 1;            cash[i] = document.getElementById(i);            cash[i].unselectable = true;
+        }
+    }
+}
+
+function CellTrigger(x, y) {
    
-}function CellTrigger(x, y) {
+}
+
+function InitSpace(x, y) {
    
-}function InitSpace(x, y) {
-   }function SwapLayers() {
+}
+
+function SwapLayers() {
    
-}function CalcNextStep() {
+}
+
+function CalcNextStep() {
    
-}function PlayLife(check) {
+}
+
+function PlayLife(check) {
    
-}function StopLife() {
+}
+
+function StopLife() {
  
-}function SetOptions() {
+}
+
+function SetOptions() {
    
-}function PrintAge() {
+}
+
+function PrintAge() {
     document.getElementById("Age").innerHTML = "Поколений : " + age;
-}function DumpOptions() {
+}
+
+function DumpOptions() {
     document.getElementById("LDelay").value = delay;
     document.getElementById("LWidth").value = Xlength;
     document.getElementById("LHeight").value = Ylength;
