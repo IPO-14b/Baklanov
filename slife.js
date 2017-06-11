@@ -7,6 +7,12 @@ var scr_1 = '#41a91d';
 var active = 0;
 var cash;
 function LoadLife(first) {
+    InitSpace(Xlength, Ylength);
+    if (first) DumpOptions();
+    TableBuild();
+    InitCash();
+    age = 0;
+    PrintAge();
    
 }function TableBuild() {
    
