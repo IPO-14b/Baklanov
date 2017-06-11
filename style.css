@@ -1,0 +1,41 @@
+#tabs{
+    margin: auto;
+    text-align: center;
+}
+#spacetable {
+    margin: auto;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 1px solid #323232;
+}
+#spacetable tr {
+    line-height: 8px;
+}
+#spacetable td {
+    margin: auto;
+    width: 8px;
+    padding: 0;
+    border: 1px solid #323232;
+    background-color: #050505;
+    text-indent: -999em;
+    cursor: default;
+}
+#bottomline{
+    border-bottom: #000000 1px solid;
+    border-left: #000000 1px solid;
+    border-right: #000000 1px solid;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+
+}
+
+#topline{
+    border-top: #000000 1px solid;
+    border-left: #000000 1px solid;
+    border-right: #000000 1px solid;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    color: #ff0000;
+}
