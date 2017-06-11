@@ -44,7 +44,6 @@ function CellTrigger(x, y) {
 }
 
 function InitSpace(x, y) {
-    C_layer = new Array(y + 2);    N_layer = new Array(y + 2);    for (var i = 0; i < y + 2; i++) {        C_layer[i] = new Array(x + 2);        N_layer[i] = new Array(x + 2);    }    for (var i = 0; i < y + 2; i++) {        for (var j = 0; j < x + 2; j++) {
     C_layer = new Array(y + 2);
     N_layer = new Array(y + 2);
     for (var i = 0; i < y + 2; i++) {
