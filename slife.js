@@ -5,7 +5,7 @@
 * @var  int yLength
 *
 */
-var xLength = 50, yLength = 50;
+var xLength = 100, yLength = 100;
 
 /**
 * Задержка перерисовки мс
